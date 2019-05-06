@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function Button() {
-  return (
-    <div>
-      <button> hello </button>
-    </div>
-  )
+export default class Button extends Component {
+  render() {
+    return (
+      <div>
+        <button> Get workout </button>
+      </div>
+    )
+  }
 }
+
