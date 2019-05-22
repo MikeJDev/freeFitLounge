@@ -1,16 +1,22 @@
-// require('dotenv').config();
 
-const config = require('../knexfile')
-const knex = require('knex')(config[production]);
+const mongoose = require('mongoose')
+require('dotenv').config()
+let user = 'build.me'
+let pass = 'BuildMyBody3'
+let host = 'ds157946.mlab.com:57946/buildme'
+let mydb = `mongodb://${user}:${pass}@${host}`
+mongoose.connect(`${mydb}`, { useNewUrlParser: true })
 
-const initialConnection = knex('freefitlounge')
-  .then(() => {
-    console.log('successful connection to database')
-  })
-  .catch(() => {
-    console.log('error connection to database')
-  });
+let buildSchema = new mongoose.Schema({
+  //all subject to change
+  id: 'number',
+  title: 'string',
+  category: 'string',
+  image_URL: 'string',
+  description: 'string',
+  price: 'number'
+})
 
-module.exports = {
-  initialConnection
-}
+let build = mongoose.model('build', buildSchema)
+
+module.exports.build = build

@@ -3,7 +3,7 @@ const knex = require('knex');
 
 const options = {
   production: {
-    client: 'pq',
+    client: 'postgresQL',
     version: '10.6',
     connection: {
       host: "localhost",
